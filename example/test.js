@@ -18,32 +18,34 @@
 var OBDReader = require('../lib/obd.js');
 var btOBDReader = new OBDReader();
 
-btOBDReader.on('dataReceived', function (data) {
-    var currentDate = new Date();
-    console.log(currentDate.getTime());
-    console.log(data);
-});
+console.log(btOBDReader.getAvailablePids());
 
-btOBDReader.on('connected', function () {
-    //this.requestValueByName("rpm"); //vss
-    this.addPoller("vss");
-    this.addPoller("rpm");
-    this.addPoller("temp");
-    this.addPoller("load_pct");
-    this.addPoller("map");
-    this.addPoller("frp");
+// btOBDReader.on('dataReceived', function (data) {
+//     var currentDate = new Date();
+//     console.log(currentDate.getTime());
+//     console.log(data);
+// });
 
-    this.startPolling(1500);
-    //this.write('0101', 1);
-});
+// btOBDReader.on('connected', function () {
+//     //this.requestValueByName("rpm"); //vss
+//     this.addPoller("vss");
+//     this.addPoller("rpm");
+//     this.addPoller("temp");
+//     this.addPoller("load_pct");
+//     this.addPoller("map");
+//     this.addPoller("frp");
 
-btOBDReader.on('error', function (data) {
-  console.log('Error: ' + data);
-});
+//     this.startPolling(1500);
+//     //this.write('0101', 1);
+// });
 
-btOBDReader.on('debug', function (data) {
-  console.log('Debug: ' + data);
-});
+// btOBDReader.on('error', function (data) {
+//   console.log('Error: ' + data);
+// });
 
-// Use first device with 'obd' in the name
-btOBDReader.autoconnect('obd');
+// btOBDReader.on('debug', function (data) {
+//   console.log('Debug: ' + data);
+// });
+
+// // Use first device with 'obd' in the name
+// btOBDReader.autoconnect('obd');
